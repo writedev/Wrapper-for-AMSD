@@ -1,5 +1,5 @@
-from app import Music
+import app
 
-music = Music(url="https://www.youtube.com/watch?v=d-kRtycneKs")
+music = app.Music(url="https://www.youtube.com/watch?v=d-kRtycneKs")
 
 print(music.download_page())

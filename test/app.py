@@ -1,10 +1,19 @@
-from bs4 import BeautifulSoup
-import requests
+import urllib.parse
+import tldextract
 
-class Music:
-    def __init__(self, url : str):
-        self.response = requests.get(url)
-        self.soup = BeautifulSoup(self.response.text, 'html.parser')
+def detect_site_origin(url):
+    # Extraire le domaine et le sous-domaine de l'URL
+    parsed_url = urllib.parse.urlparse(url)
+    extracted_domain = tldextract.extract(parsed_url.netloc)
+    
+    # Récupérer le domaine complet (par exemple 'google.com' ou 'wikipedia.org')
+    domain = f"{extracted_domain.domain}.{extracted_domain.suffix}"
+    
+    return domain
 
-    def download_page(self):
-       return self.soup.prettify
+# Exemple d'utilisation
+url_1 = "https://www.google.com/search?q=python"
+url_2 = "https://fr.wikipedia.org/wiki/Python"
+
+print(detect_site_origin(url_1))  # Sortie: google.com
+print(detect_site_origin(url_2))  # Sortie: wikipedia.org

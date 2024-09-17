@@ -1,6 +1,6 @@
 <div align=center>
 
-![logo_amsd_1920x1080](image\logo.png)
+![logo_amsd_1920x1080](https://github.com/writedev/Wrapper-for-AMSD/blob/main/assets/logo_amsd_modif.png)
 
 ![GitHub top language](https://img.shields.io/github/languages/top/writedev/Wrapper-for-AMSD)
 

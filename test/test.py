@@ -1,5 +1,5 @@
 import spotify
 
-music = spotify.Spotify(url="https://www.youtube.com/watch?v=lCA7Fhgx8g4&ab_channel=Jakubication", parser="html.parser")
+music = spotify.Spotify(url="https://open.spotify.com/intl-fr/track/60AVJqYgyAlCckC6Nh2tgO?si=144213ae0a3a4547")
 
-print(music.get_html())
+print(music.get_image())

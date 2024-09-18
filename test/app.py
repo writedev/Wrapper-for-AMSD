@@ -1,19 +1,37 @@
 import urllib.parse
-import tldextract
 
-def detect_site_origin(url):
-    # Extraire le domaine et le sous-domaine de l'URL
+def extract_url_info(url):
+    # Parser l'URL
     parsed_url = urllib.parse.urlparse(url)
-    extracted_domain = tldextract.extract(parsed_url.netloc)
     
-    # Récupérer le domaine complet (par exemple 'google.com' ou 'wikipedia.org')
-    domain = f"{extracted_domain.domain}.{extracted_domain.suffix}"
+    # Extraire les informations
+    scheme = parsed_url.scheme        # Ex: 'http' ou 'https'
+    netloc = parsed_url.netloc        # Ex: 'www.example.com'
+    path = parsed_url.path            # Le chemin après le domaine
+    params = parsed_url.params        # Paramètres s'ils existent dans le chemin
+    query = parsed_url.query          # Les requêtes (après ? dans l'URL)
+    fragment = parsed_url.fragment    # Fragment après le #
+    port = parsed_url.port            # Le port utilisé, si spécifié
     
-    return domain
+    # Afficher les informations extraites
+    print(f"Scheme: {scheme}")
+    print(f"Netloc: {netloc}")
+    print(f"Path: {path}")
+    print(f"Params: {params}")
+    print(f"Query: {query}")
+    print(f"Fragment: {fragment}")
+    print(f"Port: {port}")
+    
+    return {
+        "scheme": scheme,
+        "netloc": netloc,
+        "path": path,
+        "params": params,
+        "query": query,
+        "fragment": fragment,
+        "port": port
+    }
 
 # Exemple d'utilisation
-url_1 = "https://www.google.com/search?q=python"
-url_2 = "https://fr.wikipedia.org/wiki/Python"
-
-print(detect_site_origin(url_1))  # Sortie: google.com
-print(detect_site_origin(url_2))  # Sortie: wikipedia.org
+url = "https://music.apple.com/fr/album/x-slide/1761698525?i=1761698526"
+info = extract_url_info(url)

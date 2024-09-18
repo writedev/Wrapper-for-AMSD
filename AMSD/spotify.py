@@ -29,9 +29,16 @@ class Spotify:
             return song_name
         else:
             print("Impossible de trouver le nom de la chanson.")
+    
+    def get_artist(self):
+        meta_title = self.soup.find('meta', property='og:description')
 
-
-
+        if meta_title:
+            song_name = meta_title['content']
+            return song_name
+        else:
+            print("Impossible de trouver le nom de la chanson.")
+    
 
 
     def get_all(self):
